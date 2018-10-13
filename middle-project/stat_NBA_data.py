@@ -11,12 +11,12 @@ def get_Data_Parse(html):
                          '.*?class="chooserlittle" href="(.*?)"><div>(.*?)</div>'
                          '.*?class="chooserlittle" href="(.*?)"><div>(.*?)</div>'
                          '.*?class="chooserlittle" href="(.*?)"><div>(.*?)</div>', re.S)
-    print(pattern)
+    # print(pattern)
     result = re.search(pattern, html)
     l = []    #将查找出来的数据存入列表中
     for i in result.groups():
         l.append(i)
-    print(l)
+    # print(l)
     return l
 
 def tidy_data(data):
@@ -28,8 +28,8 @@ def tidy_data(data):
     for i in range(0,5):
         d["{}".format(i)] = data[i*2]
         d1["{}".format(i)] = data[i*2+1]
-    print(d)
-    print(d1)
+    # print(d)
+    # print(d1)
     return d, d1
 
 def thread_get_data(visit_url, visit_name):
@@ -37,8 +37,8 @@ def thread_get_data(visit_url, visit_name):
     all_data = []
     for x in visit_url:
         url_end = "http://www.stat-nba.com" + visit_url["{}".format(x)]
-        print(x)
-        print(visit_url["{}".format(x)])
+        # print(x)
+        # print(visit_url["{}".format(x)])
         datas = get_html_use_data(str(x), url_end, visit_name)
         all_data.append(datas)
     return all_data
@@ -47,11 +47,11 @@ def thread_get_data(visit_url, visit_name):
 def spider():
     url = "http://www.stat-nba.com/award/item14.html"
     html = get_Data(url)
-    print(html)
+    # print(html)
     data = get_Data_Parse(html)
-    print(data)
+    # print(data)
     visit_url, visit_name = tidy_data(data)
-    print(visit_url, visit_name)
+    # print(visit_url, visit_name)
     datas = thread_get_data(visit_url, visit_name)
     return datas
 

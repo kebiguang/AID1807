@@ -27,7 +27,7 @@ def get_html_use_data(y, url_end, player):
         l = []
         for x in result.groups():
             l.append(x)
-        print(l)
+        # print(l)
         d['赛季'] = l[0]
         d['球员'] = l[1]
         d['联盟'] = l[2]
@@ -53,7 +53,7 @@ def get_html_use_data(y, url_end, player):
         d['犯规'] = l[22]
         d['得分'] = l[23]
         ls.append(d)
-    print(ls)
+    # print(ls)
     D[player[y]] = ls
     return D
 
@@ -62,7 +62,7 @@ def get_html_use_data(y, url_end, player):
 
 def main():
     data = get_html_use_data('/award/item14pr1.html')
-    print(data)
+    # print(data)
 
 
 if __name__ == "__main__":
